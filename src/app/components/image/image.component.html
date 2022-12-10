@@ -1,0 +1,36 @@
+<div class="container py-5 bg-light">
+
+  <form [formGroup]="imageGeneratorForm">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12 mb-3">
+        <div class="form-floating">
+          <input type="type" class="form-control" id="prompt" placeholder="naruto okage" formControlName="prompt">
+          <label for="prompt">Describe an image</label>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-12 col-xs-12 mb-3">
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option value="256x256">Small</option>
+            <option value="512x512">Medium</option>
+            <option value="1024x1024">Large</option>
+          </select>
+          <label for="floatingSelect">Size</label>
+        </div>
+      </div>
+      <div class="col-md-1 col-sm-12 col-xs-12 mb-3 text-center">
+        <button type="submit" class="btn btn-dark py-3" (click)="onSubmitClick()">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="d-flex justify-content-center">
+    <ng-container *ngIf="isLoading">
+      <span class="placeholder w-25 h-20 bg-secondary"></span>
+    </ng-container>
+    <ng-container *ngIf="aiImage">
+      <img [src]="aiImage.data" [alt]="aiImage.data" class="img">
+    </ng-container>
+  </div>
+
+</div>
